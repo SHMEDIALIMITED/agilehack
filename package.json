@@ -3,6 +3,7 @@
   "description": "example chat application with sio-chat",
   "version": "0.0.1",
   "scripts": {
+	  "prestart" : "npm install",
 	  "start": "node server.js"
   },
   "dependencies": {
