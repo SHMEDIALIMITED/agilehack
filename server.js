@@ -22,7 +22,7 @@ chat = require('chat.io').createChat(sio.of('/chat'));
 
 sio.configure(function () {
   sio.of('/chat').authorization(function (handshake, callback) {
-    handshake.nickname = 'Guest' + counter++;
+    handshake.nickname = 'AloUser' + counter++;
     callback(null, true);
   });
 });
