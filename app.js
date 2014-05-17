@@ -8,17 +8,17 @@ var sio
   , app = express();
 
 app.configure(function () {
-  app.use(express['static'](__dirname + '/public'));
+  app.use(express['static'](__dirname + '/public/app'));
 });
 
 app.get('/', function (req, res) {
-  res.redirect('index.html');
+  res.redirect('app/index.html');
 });
 
 
 server = http.createServer(app);
 sio = require('socket.io').listen(server);
-chat = require('../../lib/chat.io').createChat(sio.of('/chat'));
+chat = require('chat.io').createChat(sio.of('/chat'));
 
 sio.configure(function () {
   sio.of('/chat').authorization(function (handshake, callback) {
@@ -27,4 +27,4 @@ sio.configure(function () {
   });
 });
 
-server.listen(8080);
+server.listen(3000);
