@@ -5,11 +5,19 @@ var sio
   , counter = 1
   , express = require('express')
   , http = require('http')
-  , app = express();
+  , app = express()
+  , env = process.env.NODE_ENV || 'development'
+  , port = process.env.PORT || 3000;
 
-app.configure(function () {
-  app.use(express['static'](__dirname + '/public/app'));
-});
+if (env == 'development') {
+	// configure development here
+}
+
+if (env == 'production') {
+	// configure production here
+}
+
+app.use(express['static'](__dirname + '/public/app'));
 
 app.get('/', function (req, res) {
   res.redirect('app/index.html');
@@ -27,4 +35,5 @@ sio.configure(function () {
   });
 });
 
-server.listen(process.env.PORT || 3000);
+console.log('Running express in ' + env + ' mode on port ' + port);
+server.listen(port);
