@@ -10,7 +10,7 @@ angular.module('myApp.services', []).
   factory('ChatSocket',function($rootScope) {
   	var socket = io.connect();
   	return {
-  		on : function() {
+  		on : function(eventName, callback) {
   			socket.on(eventName, function () {  
 		        var args = arguments;
 			    $rootScope.$apply(function () {
