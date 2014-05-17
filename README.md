@@ -1,4 +1,17 @@
-agilehack
-=========
+Meteor chat example
+===================
 
-We're gonna build an app in MeteorJS. This app will allow you to chat with people in the near surroundings only. To do that we will be asking a user's geolocation and if it matches another user's location then we got a match.
+Simple Meteor.js chat.
+
+Setup on Runnable.com
+-------------------
+Create Node.js Runnable and install Meteor using quickstart
+```
+curl https://gist.github.com/liquidautumn/7398127/raw/runnable-meteor | /bin/sh
+```
+Clone example repository to `app` folder
+```
+git clone https://github.com/liquidautumn/runnable-meteor-chat.git app
+```
+Open dropdown on the Run button and set Run cmd to `./start`
+Run it.
