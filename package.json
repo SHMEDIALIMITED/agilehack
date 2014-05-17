@@ -1,6 +1,6 @@
 {
-  "name": "simple-sio-chat",
-  "description": "example chat application with sio-chat",
+  "name": "agilehack",
+  "description": "AgileHack hackaton spike!",
   "version": "0.0.1",
   "scripts": {
 	  "prestart" : "npm install && cd public && npm install",
