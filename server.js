@@ -6,6 +6,7 @@ var sio
   , express = require('express')
   , http = require('http')
   , app = express()
+  , router = express.Router()
   , env = process.env.NODE_ENV || 'development'
   , port = process.env.PORT || 3000;
 
@@ -25,6 +26,11 @@ app.get('/', function (req, res) {
   res.redirect('app/index.html');
 });
 
+router.get('/auth', function (req, res) {
+    var tok = Math.random() + Math.random() + Math.random() + Math.random() + Math.random();
+    res.send({token: tok} );
+});
+
 
 server = http.createServer(app);
 sio = require('socket.io').listen(server);
@@ -38,6 +44,7 @@ sio.configure(function () {
 });
 
 chat.on('join', function (user) {
+        console.log(user);
         message.append(user + ' joined your channel.');
     });
 
