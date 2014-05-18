@@ -7,8 +7,12 @@ angular.module('myApp.controllers', [])
  	
  	$scope.test = 'Hello World' 		
 
-  	ChatSocket.on('say', function(){
+  	ChatSocket.on('join', function(user){
+  		console.log('VOILA', user)	
+  	})
 
+  	ChatSocket.emit('join', 'test-room', function(err) {
+  		console.log('HERE')
   	})
   }])
   .controller('MyCtrl2', ['$scope', function($scope) {

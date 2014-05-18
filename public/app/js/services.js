@@ -6,9 +6,9 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
-  value('version', '0.1').
-  factory('ChatSocket',function($rootScope) {
-  	var socket = io.connect();
+  value('version', '0.1'). 
+  factory('ChatSocket',function($rootScope, socketURL) {
+  	var socket = io.connect(socketURL);
   	return {
   		on : function(eventName, callback) {
   			socket.on(eventName, function () {  
@@ -21,7 +21,7 @@ angular.module('myApp.services', []).
   		emit : function(eventName, data, callback ) {
   			socket.emit(eventName, data, function() {
   				var args = arguments;
-  				$rootScope.apply(function(){
+  				$rootScope.$apply(function(){
   					callback.apply(socket, args);
   				})
   			})

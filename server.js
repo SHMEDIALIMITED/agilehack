@@ -37,5 +37,9 @@ sio.configure(function () {
   });
 });
 
+socket.on('join', function (user) {
+        message.append(user + ' joined your channel.');
+    });
+
 console.log('Running express in ' + env + ' mode on port ' + port);
 server.listen(port);
