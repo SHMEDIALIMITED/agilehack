@@ -15,23 +15,31 @@ angular.module('myApp.directives', []).
   		restrict : 'E',
   		scope : true,
   		templateUrl : 'partials/room.html',
-  		controller : ['$scope', 'ChatSocket', 'roomID', function($scope, s, roomID) {
+  		controller : ['$scope', 'ChatSocket', 'roomID', function($scope, s, roomID, $window) {
 
   			$scope.chat = {
-  				users : []
+  				users : [],
   			};
 
   			s.emit('join', $scope.roomID, function(err) {
-  				
   				if(err) alert('Could not connect to chat');
   			});
 
   			s.on('join', function(user) {
-
-  				
+  				console.log(users)
   				$scope.chat.users.push(user);
   			});
 
+
+			$scope.submit = function() {
+				s.emit('say', $scope.chat.input, function() {
+				});
+			}
+
+			window.onbeforeunload = function() {
+
+				s.emit('leave');
+			}
 
   		}],
   		link : function(scope, element, attrs) {
