@@ -10,6 +10,7 @@
     "express": "*",
     "socket.io": "*",
     "chat.io": "*",
-    "bower": "*"
+    "bower": "*",
+    "ejs": "*"
   }
 }
