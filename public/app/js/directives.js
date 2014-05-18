@@ -21,12 +21,15 @@ angular.module('myApp.directives', []).
   				users : [],
   			};
 
-  			s.emit('join', $scope.roomID, function(err) {
+  			s.emit('join', 'myroom', function(err) {
+
+  				console.log('JOINED CB', arguments)
+
   				if(err) alert('Could not connect to chat');
   			});
 
   			s.on('join', function(user) {
-  				console.log(users)
+  				console.log('USER JOINED', user)
   				$scope.chat.users.push(user);
   			});
 
