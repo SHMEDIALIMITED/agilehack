@@ -17,7 +17,9 @@ if (env == 'production') {
 	// configure production here
 }
 
+
 app.use(express['static'](__dirname + '/public/app'));
+app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
   res.redirect('app/index.html');
