@@ -37,7 +37,7 @@ sio.configure(function () {
   });
 });
 
-socket.on('join', function (user) {
+chat.on('join', function (user) {
         message.append(user + ' joined your channel.');
     });
 

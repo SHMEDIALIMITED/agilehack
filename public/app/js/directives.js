@@ -9,17 +9,32 @@ angular.module('myApp.directives', []).
       elm.text(version);
     };
   }]).
-  directive('Room', ['ChatSocket', function(chat) {
+  directive('room', ['ChatSocket', function(chat) {
 
   	return {
   		restrict : 'E',
-  		scope : {
-  			roomID : '=room-id'
-  		},
-  		controller : ['$scope', function($scope) {
-  			console.log('')
+  		scope : true,
+  		templateUrl : 'partials/room.html',
+  		controller : ['$scope', 'ChatSocket', 'roomID', function($scope, s, roomID) {
+
+  			$scope.chat = {
+  				users : []
+  			};
+
+  			s.emit('join', $scope.roomID, function(err) {
+  				
+  				if(err) alert('Could not connect to chat');
+  			});
+
+  			s.on('join', function(user) {
+
+  				
+  				$scope.chat.users.push(user);
+  			});
+
+
   		}],
-  		link : function(scope, element, attrs, ) {
+  		link : function(scope, element, attrs) {
 
   		}
   	}
