@@ -34,10 +34,7 @@ app.get('/', function (req, res) {
   res.redirect('app/index.html');
 });
 
-<<<<<<< HEAD
 //LAUNCH THE PONY
-=======
->>>>>>> 2c9f72e90deb0f9e48d470855053867c9455bb54
 
 server = http.createServer(app);
 sio = require('socket.io').listen(server);
@@ -53,12 +50,9 @@ sio.configure(function () {
   });
 });
 
-<<<<<<< HEAD
 chat.on('join', function (user) {
         message.append(user + ' joined your channel.');
     });
 
-=======
->>>>>>> 2c9f72e90deb0f9e48d470855053867c9455bb54
 console.log('Running express in ' + env + ' mode on port ' + port);
 server.listen(port);
