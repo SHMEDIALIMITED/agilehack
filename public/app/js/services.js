@@ -21,7 +21,7 @@ angular.module('myApp.services', []).
         return res.data;
       })
     }
-  })
+  }).
   factory('ChatSocket',function($rootScope, socketURL) {
   	var socket = io.connect(socketURL);
   	return {
